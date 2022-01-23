@@ -11,27 +11,32 @@ Copyright &copy; Matthew R. Kisow, D.Sc.  2020-2021.
 ```
 2.  Create a scheduled task:<br>
     **GENERAL**<br>
-    a. Name:<br>
-	   1.) Account Lockout Notification<br>
-    b. Description:<br>
-	   1.) Send an email on an account lockout event.<br>
-    c. Security Options:<br>
-       1.) Create a service account with "Domain Admin" and "Logon as a Batch" rights.<br>
-       2.) Run whether the user is logged on or not.<br>
-       3.) Run with the highest privileges.<br>
+    ```shell
+    a. Name:              Account Lockout Notification
+    b. Description:       Send an email on an account lockout event.
+    c. Security Options:
+       1.) Create a service account with "Domain Admin" and "Logon as a Batch" rights.
+       2.) Run whether the user is logged on or not.
+       3.) Run with the highest privileges.
+    ```
+    
     **TRIGGERS**<br>
-    a. Begin the task:<br>
-       1.) On an event.<br>
-    b. Settings:<br>
-       1.) Basic<br>
-       2.) Log:      Security Log<br>
-       3.) Source:   Microsoft Windows security auditing.<br>
-       4.) Event ID: Event ID: 4740<br>
+    ```shell
+    a. Begin the task: On an event.
+    b. Settings:
+       1.) Basic
+       2.) Log:      Security Log
+       3.) Source:   Microsoft Windows security auditing.
+       4.) Event ID: Event ID: 4740
+    ```
+    
     **ACTIONS**<br>
-    a. Action:         Start a program.<br>
-    b. Program/script: powershell.exe<br>
+    ```shell
+    a. Action:                    Start a program.<br>
+    b. Program/script:            powershell.exe<br>
     c. Add arguements (optional): -NoProfile -ExecutionPolicy Bypass -nologo -file "C:\Scripts\account-lockout.ps1"<br>
-
+    ```
+    
 ## License
 License (GPL v3.0)
 
